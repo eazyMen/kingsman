@@ -21,6 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kingman"
         tools:targetApi="31">
+        <meta-data android:name="com.snap.camerakit.api.token" android:value="eyJhbGciOiJIUzI1NiIsImtpZCI6IkNhbnZhc1MyU0hNQUNQcm9kIiwidHlwIjoiSldUIn0.eyJhdWQiOiJjYW52YXMtY2FudmFzYXBpIiwiaXNzIjoiY2FudmFzLXMyc3Rva2VuIiwibmJmIjoxNzU1ODAxNzM2LCJzdWIiOiI4ZjFjNjNiMC1kOTE0LTRmYmQtYjljYS1hYzM1YzFmMjI5ZTF-U1RBR0lOR35hMTA1OGM5OS0xOTg2LTRhOTItYTM0NS1iMWY2OGRmYTZhNGYifQ.NYy6QtqS2SUAYUKPxFDsQoC1RiKO0CK6tyze5GudPLU"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -31,6 +33,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.ar.ArActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Kingman2"
+            android:exported="true">
         </activity>
     </application>
 

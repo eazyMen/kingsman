@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Kingman"
 include(":app")
+include(":mylibrary")
