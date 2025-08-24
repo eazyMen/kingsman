@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.sp
 import ru.amria.designsystem.R
 
 val RubikFontFamilyBold = FontFamily(
-    Font(R.font.rubik_one, FontWeight.Bold),
+    Font(R.font.futura, FontWeight.Bold),
 )
 
 val RubikFontFamilyMedium = FontFamily(
@@ -28,28 +28,26 @@ val RubikFontFamilyLight = FontFamily(
 val Typography = Typography(
     titleLarge = TextStyle(
         fontSize = 24.sp,
-        fontWeight = FontWeight(300),
+        fontWeight = FontWeight(700),
         letterSpacing = 0.1.sp,
-        fontFamily = RubikFontFamilyNormal,
+        fontFamily = RubikFontFamilyBold,
     ),
     titleMedium = TextStyle(
         fontSize = 20.sp,
         fontWeight = FontWeight(300),
         letterSpacing = 0.1.sp,
-        fontFamily = RubikFontFamilyNormal,
+        fontFamily = RubikFontFamilyBold,
     ),
     titleSmall = TextStyle(
         fontSize = 16.sp,
         fontWeight = FontWeight(300),
         letterSpacing = 0.1.sp,
-        fontFamily = RubikFontFamilyNormal,
+        fontFamily = RubikFontFamilyBold,
     ),
     bodyLarge = TextStyle(
-        fontSize = 20.sp,
-        fontWeight = FontWeight(400),
+        fontSize = 26.sp,
         letterSpacing = 0.2.sp,
         fontFamily = RubikFontFamilyNormal,
-        lineHeight = 20.sp * 1.4f
     ),
     bodyMedium = TextStyle(
         fontSize = 16.sp,

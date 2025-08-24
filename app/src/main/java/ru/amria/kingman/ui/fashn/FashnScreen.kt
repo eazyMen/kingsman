@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
@@ -62,7 +63,8 @@ fun FashnScreenCompose(
                 Column {
                     CommonText(
                         text = name,
-                        textColor = KingsmanTheme.extraColors.textDark
+                        textColor = KingsmanTheme.extraColors.textDark,
+                        textStyle = MaterialTheme.typography.titleMedium
                     )
                     Spacer(modifier = Modifier.height(6.dp))
                     CommonText(
@@ -72,6 +74,13 @@ fun FashnScreenCompose(
                 }
             }
             Spacer(modifier = Modifier.height(12.dp))
+            CommonText(
+                modifier = Modifier.padding(horizontal = 16.dp),
+                text = "Мои образы",
+                textColor = KingsmanTheme.extraColors.textDark,
+                textStyle = MaterialTheme.typography.titleMedium
+            )
+            Spacer(modifier = Modifier.height(8.dp))
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 contentPadding = PaddingValues(horizontal = 16.dp)

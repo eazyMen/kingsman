@@ -48,6 +48,7 @@ fun BannerWidget(
         ) {
             CommonText(
                 text = "Новое поступление",
+                textStyle = MaterialTheme.typography.titleMedium
             )
             CommonText(
                 text = "Скидка на обувь из\n" +
