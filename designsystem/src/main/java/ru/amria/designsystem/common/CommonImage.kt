@@ -11,12 +11,12 @@ import ru.amria.designsystem.R
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
-fun CommonImage(modifier: Modifier = Modifier.fillMaxSize(), imageUrl: String) {
+fun CommonImage(modifier: Modifier = Modifier.fillMaxSize(), imageUrl: String, contentScale: ContentScale = ContentScale.Crop) {
     GlideImage(
         model = imageUrl,
         contentDescription = null,
         failure = placeholder(R.drawable.logo_transparent),
         modifier = modifier,
-        contentScale = ContentScale.Crop,
+        contentScale = contentScale,
     )
 }

@@ -15,7 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import dagger.hilt.android.AndroidEntryPoint
 import ru.amria.kingman.ui.ar.ArActivity
-import ru.amria.kingman.ui.fashn.FashnScreen
+import ru.amria.kingman.ui.fashn.FashnScreenCompose
 import ru.amria.kingman.ui.home.HomeScreen
 import ru.amria.kingman.ui.navigation.FashnScreen
 import ru.amria.kingman.ui.navigation.Home
@@ -33,10 +33,14 @@ class MainActivity : ComponentActivity() {
                     composable<Home> {
                         HomeScreen(
                             onDetail = {
-                                navController.navigate(FashnScreen(imgUrl = "https://ussuriysk.diamondelectric.ru/images/838/837826/pidjak_mango_1.jpg"))
+
                             },
-                            onAR = {
+                            onFitting = { img, name ->
+                                navController.navigate(FashnScreen(img, name))
+                            },
+                            onAR = { lensId ->
                                 Intent(this@MainActivity, ArActivity::class.java).apply {
+                                    putExtra("lensId", lensId)
                                     startActivity(this)
                                 }
                             }
@@ -44,7 +48,7 @@ class MainActivity : ComponentActivity() {
                     }
                     composable<FashnScreen> { backStackEntry ->
                         val args = backStackEntry.toRoute<FashnScreen>()
-                        FashnScreen()
+                        FashnScreenCompose(args.img, args.name)
                     }
                 }
             }

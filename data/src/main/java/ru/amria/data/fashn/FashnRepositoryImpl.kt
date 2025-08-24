@@ -5,6 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
+import ru.amria.domain.common.network.suspendCallForResult
 import ru.amria.domain.models.MyImage
 import ru.amria.domain.repository.FashnRepository
 import ru.amria.domain.repository.RunRequest
@@ -43,15 +44,12 @@ class FashnRepositoryImpl @Inject constructor(private val api: FashnApi) : Fashn
         ),
     )
 
-    override suspend fun run(modelUrl: String, garmentUrl: String): RunResponse {
+    override suspend fun run(modelUrl: String, garmentUrl: String) = suspendCallForResult {
         val body = RunRequestTryOn(inputs = TryOnInputs(modelUrl, garmentUrl))
-
-        return api.run(
-            body
-        )
+        api.run(body)
     }
 
-    override suspend fun status(id: String): StatusResponse =
+    override suspend fun status(id: String) = suspendCallForResult {
         api.status(id)
-
+    }
 }

@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -27,10 +28,12 @@ import ru.amria.designsystem.common.CommonText
 import ru.amria.designsystem.theme.KingsmanTheme
 import ru.amria.designsystem.widget.ClothCardWidget
 import ru.amria.designsystem.widget.MyImageWidget
+import ru.amria.domain.models.dress.Dress
 
 @Composable
-fun FashnScreen(
-    selectCloth: String = "https://ussuriysk.diamondelectric.ru/images/838/837826/pidjak_mango_1.jpg", //пиджак по умолчанию
+fun FashnScreenCompose(
+    image: String,
+    name: String
 ) {
     val viewModel = hiltViewModel<FashnViewModel>()
     val state = viewModel.uiState.collectAsState()
@@ -47,22 +50,23 @@ fun FashnScreen(
                 Column(
                     modifier = Modifier
                         .background(
-                            color = KingsmanTheme.extraColors.clothCardBG,
+                            color = KingsmanTheme.extraColors.white,
                             shape = RoundedCornerShape(20.dp)
                         ),
                     verticalArrangement = Arrangement.Center,
                 ) {
-                    CommonImage(modifier = Modifier.size(106.dp), imageUrl = selectCloth)
+                    CommonImage(modifier = Modifier.size(106.dp), imageUrl = "https://s3.regru.cloud/images-zapominashka/uploads/${image}",
+                        contentScale = ContentScale.Fit)
                 }
                 Spacer(modifier = Modifier.height(6.dp))
                 Column {
                     CommonText(
-                        text = "Кожанные кеды",
+                        text = name,
                         textColor = KingsmanTheme.extraColors.textDark
                     )
                     Spacer(modifier = Modifier.height(6.dp))
                     CommonText(
-                        text = "Идеально подойдут под повседневный образ",
+                        text = "Идеально подойдет под повседневный образ",
                         textColor = KingsmanTheme.extraColors.textDark
                     )
                 }
@@ -74,7 +78,7 @@ fun FashnScreen(
             ) {
                 items(state.value.myImages) {
                     MyImageWidget(it) { img ->
-                        viewModel.changeImage(img, viewModel.imgUrl)
+                        viewModel.changeImage(img, "https://s3.regru.cloud/images-zapominashka/uploads/${image}")
                     }
                 }
             }
@@ -99,6 +103,6 @@ fun FashnScreen(
 @Composable
 fun FashnScreenPreview() {
     KingsmanTheme {
-        FashnScreen("")
+        FashnScreenCompose("","")
     }
 }

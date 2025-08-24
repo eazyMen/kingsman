@@ -22,6 +22,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Kingman"
 include(":app")
-include(":mylibrary")
+include(":designsystem")
 include(":data")
 include(":domain")

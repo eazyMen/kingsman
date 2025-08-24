@@ -19,10 +19,10 @@ class ArActivity : AppCompatActivity(R.layout.activity_main) {
 
     private lateinit var cameraKitSession: Session
     private lateinit var imageProcessorSource: CameraXImageProcessorSource
+    var LENS_ID = "533bc300-4db0-45e2-8031-7fa14604feb2"
 
     companion object {
         const val LENS_GROUP_ID = "6c126e51-f0d2-4f39-9de7-e6a3a8402302"
-        const val LENS_ID = "533bc300-4db0-45e2-8031-7fa14604feb2"
     }
 
     // Initialize a permission request launcher
@@ -38,6 +38,9 @@ class ArActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val bundle: Bundle? = intent.extras
+        LENS_ID = bundle?.getString("lensId") ?: LENS_ID
+
         // Checking if Camera Kit is supported on this device or not.
         if (!supported(this)) {
             Toast.makeText(this, "camera_kit_not_supported", Toast.LENGTH_SHORT).show()
