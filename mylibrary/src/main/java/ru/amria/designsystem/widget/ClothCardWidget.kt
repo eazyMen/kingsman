@@ -28,6 +28,7 @@ import ru.amria.designsystem.theme.KingsmanTheme
 @Composable
 fun ClothCardWidget(
     onAR: () -> Unit = {},
+    onDetail: () -> Unit = {},
 ) {
     Column(
         modifier = Modifier.fillMaxWidth()
@@ -43,7 +44,10 @@ fun ClothCardWidget(
                 Image(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(152.dp),
+                        .height(152.dp)
+                        .clickable{
+                            onDetail()
+                        },
                     painter = painterResource(R.drawable.boots),
                     contentDescription = null
                 )

@@ -1,6 +1,7 @@
 package ru.amria.kingman.ui.home
 
 import android.widget.Space
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -51,14 +52,16 @@ fun HomeScreen(
                 LazyRow(
                     horizontalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                    items(10) { CategoryWidget() }
+                    items(10) { CategoryWidget(
+                        modifier = Modifier
+                    ) }
                 }
             }
             item(span = { GridItemSpan(maxLineSpan) }) {
                 Spacer(modifier = Modifier.height(2.dp))
             }
             items(10) {
-                ClothCardWidget(onAR)
+                ClothCardWidget(onAR, onDetail)
             }
         }
     }

@@ -20,10 +20,11 @@ import ru.amria.designsystem.theme.KingsmanTheme
 
 @Composable
 fun CategoryWidget(
+    modifier: Modifier = Modifier,
     isSelected: Boolean = false
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .background(
                 color = KingsmanTheme.extraColors.bannerBGColor,
                 shape = RoundedCornerShape(12.dp)

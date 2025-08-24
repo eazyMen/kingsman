@@ -1,7 +1,7 @@
 [versions]
-agp = "8.10.1"
-kotlin = "2.0.21"
-coreKtx = "1.16.0"
+agp = "8.6.0"
+kotlin = "2.1.21"
+coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -21,6 +21,7 @@ serialization = "2.0.21"
 ktx_serialization = "1.7.3"
 runtimeAndroid = "1.8.0"
 uiTooling = "1.8.1"
+hiltNavCompose = "1.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -48,10 +49,15 @@ androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui"
 androidx-navigation-dff = { group = "androidx.navigation", name = "navigation-dynamic-features-fragment", version.ref = "nav_version" }
 androidx-navigation-test = { group = "androidx.navigation", name = "navigation-dynamic-features-testing", version.ref = "nav_version" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "uiTooling" }
+hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavCompose" }
 
 #serialization
 jetbrains-kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "ktx_serialization" }
 retrofit-gson = { group = "com.squareup.retrofit2", name ="converter-gson", version.ref = "gson" }
+
+#hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 
 #network
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version = "3.0.0" }
@@ -64,4 +70,5 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serialization" }
-
+devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

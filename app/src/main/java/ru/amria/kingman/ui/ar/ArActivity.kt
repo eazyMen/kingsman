@@ -72,7 +72,7 @@ class ArActivity : AppCompatActivity(R.layout.activity_main) {
 
     private fun startPreview() {
         // starting preview with world facing camera
-        imageProcessorSource.startPreview(false)
+        imageProcessorSource.startPreview(false) //todo в зависимости от типа одежды менять камеру
     }
 
     override fun onDestroy() {
