@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import ru.amria.designsystem.theme.KingsmanTheme
 
 @Composable
@@ -14,11 +15,14 @@ fun CommonText(
     text: String,
     textColor: Color = KingsmanTheme.extraColors.white,
     textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+    textAlign: TextAlign = TextAlign.Start,
 ) {
     Text(
         modifier = modifier,
         text = text,
         color = textColor,
-        style = textStyle
+        style = textStyle,
+        textAlign = textAlign,
+        fontSize = textStyle.fontSize
     )
 }

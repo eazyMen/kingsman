@@ -24,6 +24,14 @@ val RubikFontFamilyLight = FontFamily(
     Font(R.font.rubik_one, FontWeight.ExtraLight),
 )
 
+val GothamProFontFamilyLight = FontFamily(
+    Font(R.font.gothampro_light),
+)
+
+val GothamProFontFamilyMedium = FontFamily(
+    Font(R.font.gothampro_medium),
+)
+
 
 val Typography = Typography(
     titleLarge = TextStyle(
@@ -84,7 +92,7 @@ val TitleStyle = TextStyle(
     fontSize = 28.sp,
     fontWeight = FontWeight(700),
     letterSpacing = 0.1.sp,
-    fontFamily = RubikFontFamilyNormal
+    fontFamily = RubikFontFamilyBold
 )
 
 val Title2Style = TextStyle(
@@ -101,11 +109,18 @@ val TitlePlashStyle = TextStyle(
     fontFamily = RubikFontFamilyNormal
 )
 
-val BodyPlashStyle = TextStyle(
-    fontSize = 14.sp,
-    fontWeight = FontWeight(400),
+val BodyLightStyle = TextStyle(
+    fontSize = 18.sp,
     letterSpacing = 0.2.sp,
-    fontFamily = RubikFontFamilyNormal
+    fontFamily = GothamProFontFamilyLight,
+    lineHeight = 18.sp * 1.4f
+)
+
+val BodyMediumStyle = TextStyle(
+    fontSize = 16.sp,
+    letterSpacing = 0.2.sp,
+    fontFamily = GothamProFontFamilyMedium,
+    lineHeight = 16.sp * 1.4f
 )
 
 val SemiBoldDescrStyle = TextStyle(

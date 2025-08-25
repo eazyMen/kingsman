@@ -17,6 +17,7 @@ private val LightColorScheme = darkColorScheme()
 @Immutable
 data class KingsmanExtraColors(
     val textPrimary: Color = Color.Unspecified,
+    val textPrimary2: Color = Color.Unspecified,
     val textDark: Color = Color.Unspecified,
     val secondaryText: Color = Color.Unspecified,
     val lightBannerTextColor: Color = Color.Unspecified,
@@ -47,6 +48,7 @@ private val LocalExtraColors = staticCompositionLocalOf {
 
 private val DarkExtraColors = KingsmanExtraColors(
     textPrimary = TEXT_WHITE,
+    textPrimary2 = TEXT_WHITE_2,
     textDark = TEXT_DARK,
     secondaryText = TEXT_SECONDARY,
     lightBannerTextColor = LIGHT_BANNER_TEXT,

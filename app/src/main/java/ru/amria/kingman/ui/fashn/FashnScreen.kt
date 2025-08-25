@@ -27,9 +27,7 @@ import ru.amria.designsystem.common.CommonImage
 import ru.amria.designsystem.common.CommonProgress
 import ru.amria.designsystem.common.CommonText
 import ru.amria.designsystem.theme.KingsmanTheme
-import ru.amria.designsystem.widget.ClothCardWidget
 import ru.amria.designsystem.widget.MyImageWidget
-import ru.amria.domain.models.dress.Dress
 
 @Composable
 fun FashnScreenCompose(

@@ -19,7 +19,9 @@ import ru.amria.kingman.ui.fashn.FashnScreenCompose
 import ru.amria.kingman.ui.home.HomeScreen
 import ru.amria.kingman.ui.navigation.FashnScreen
 import ru.amria.kingman.ui.navigation.Home
+import ru.amria.kingman.ui.navigation.Tutorial
 import ru.amria.kingman.ui.theme.KingmanTheme
+import ru.amria.kingman.ui.tutorial.TutorialScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -29,7 +31,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
             KingmanTheme {
-                NavHost(navController = navController, startDestination = Home) {
+                NavHost(navController = navController, startDestination = Tutorial) {
+                    composable<Tutorial> {
+                        TutorialScreen(
+                            onClick = {
+                                navController.navigate(Home)
+                            }
+                        )
+                    }
                     composable<Home> {
                         HomeScreen(
                             onDetail = {
