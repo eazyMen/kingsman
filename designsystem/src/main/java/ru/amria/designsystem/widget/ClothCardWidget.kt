@@ -26,14 +26,16 @@ import ru.amria.designsystem.R
 import ru.amria.designsystem.common.CommonImage
 import ru.amria.designsystem.common.CommonText
 import ru.amria.designsystem.theme.KingsmanTheme
+import ru.amria.domain.models.dress.CategoryType
 import ru.amria.domain.models.dress.Dress
 
 @Composable
 fun ClothCardWidget(
     dress: Dress? = null,
+    isAddBtnShow: Boolean = true,
     onAR: (String) -> Unit = {},
     onFitting: (Dress) -> Unit = {},
-    onDetail: () -> Unit = {},
+    onAddToBasket: (Dress) -> Unit = {},
 ) {
     Column(
         modifier = Modifier.fillMaxWidth()
@@ -51,7 +53,13 @@ fun ClothCardWidget(
                         .fillMaxWidth()
                         .height(152.dp)
                         .clickable {
-                            onFitting(dress!!)
+                            if (dress?.categoryType == CategoryType.Shirt) {
+                                onFitting(dress!!)
+                            }else {
+                                if (dress?.isAr == true){
+                                    onAR(dress.lensId.orEmpty())
+                                }
+                            }
                         },
                     imageUrl = "https://s3.regru.cloud/images-zapominashka/uploads/${dress!!.img}",
                     contentScale = ContentScale.Fit
@@ -92,12 +100,16 @@ fun ClothCardWidget(
                     .fillMaxWidth()
                     .weight(1f)
             )
-            Image(
-                modifier = Modifier
-                    .size(30.dp),
-                painter = painterResource(R.drawable.ic_basket_add),
-                contentDescription = null
-            )
+            if (isAddBtnShow)
+                Image(
+                    modifier = Modifier
+                        .size(30.dp)
+                        .clickable{
+                            onAddToBasket(dress)
+                        },
+                    painter = painterResource(R.drawable.ic_basket_add),
+                    contentDescription = null
+                )
         }
         Spacer(modifier = Modifier.height(12.dp))
     }

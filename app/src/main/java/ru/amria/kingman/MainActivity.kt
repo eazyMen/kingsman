@@ -14,9 +14,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import dagger.hilt.android.AndroidEntryPoint
+import ru.amria.kingman.ui.account.AccountScreen
 import ru.amria.kingman.ui.ar.ArActivity
 import ru.amria.kingman.ui.fashn.FashnScreenCompose
 import ru.amria.kingman.ui.home.HomeScreen
+import ru.amria.kingman.ui.navigation.Account
 import ru.amria.kingman.ui.navigation.FashnScreen
 import ru.amria.kingman.ui.navigation.Home
 import ru.amria.kingman.ui.navigation.Tutorial
@@ -31,11 +33,18 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
             KingmanTheme {
-                NavHost(navController = navController, startDestination = Tutorial) {
+                NavHost(navController = navController, startDestination = Home) {
                     composable<Tutorial> {
                         TutorialScreen(
                             onClick = {
                                 navController.navigate(Home)
+                            }
+                        )
+                    }
+                    composable<Account> {
+                        AccountScreen(
+                            onBackClick = {
+                                navController.popBackStack()
                             }
                         )
                     }
@@ -44,20 +53,23 @@ class MainActivity : ComponentActivity() {
                             onDetail = {
 
                             },
-                            onFitting = { img, name ->
-                                navController.navigate(FashnScreen(img, name))
+                            onFitting = { img, name, price ->
+                                navController.navigate(FashnScreen(img, name, price))
                             },
                             onAR = { lensId ->
                                 Intent(this@MainActivity, ArActivity::class.java).apply {
                                     putExtra("lensId", lensId)
                                     startActivity(this)
                                 }
+                            },
+                            onAccount = {
+                                navController.navigate(Account)
                             }
                         )
                     }
                     composable<FashnScreen> { backStackEntry ->
                         val args = backStackEntry.toRoute<FashnScreen>()
-                        FashnScreenCompose(args.img, args.name)
+                        FashnScreenCompose(args.img, args.name, args.price)
                     }
                 }
             }

@@ -16,6 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.amria.designsystem.common.CommonImage
 import ru.amria.designsystem.common.CommonText
+import ru.amria.designsystem.theme.BodyLightStyle16
+import ru.amria.designsystem.theme.BodyMediumStyle
 import ru.amria.designsystem.theme.KingsmanTheme
 import ru.amria.domain.models.MyImage
 
@@ -50,7 +52,8 @@ fun MyImageWidget(
         Spacer(modifier = Modifier.height(10.dp))
         CommonText(
             textColor = KingsmanTheme.extraColors.textDark,
-            text = image.name
+            text = image.name,
+            textStyle = BodyMediumStyle
         )
     }
 }

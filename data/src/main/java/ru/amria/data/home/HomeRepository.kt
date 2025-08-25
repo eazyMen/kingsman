@@ -163,11 +163,23 @@ class HomeRepositoryImpl @Inject constructor() : HomeRepository {
             sizes = listOf(22, 23, 24, 25, 26, 27),
         ),
         Dress(
+            name = "Очки для работы",
+            img = "2d290275-6513-4a8b-acd6-f2f22b1c3316_3.png",
+            categoryType = CategoryType.Glass,
+            price = 5000,
+            isAr = true,
+            lensId = "48cc7ac6-9df4-454d-8443-943575609977",
+            isFitting = true,
+            color = "Черный",
+            sizes = listOf(22, 23, 24, 25, 26, 27),
+        ),
+        Dress(
             name = "Очки отечественные",
             img = "1498afcb-9883-497d-896f-d558cac26631_1.png",
             categoryType = CategoryType.Glass,
-            price = 10000,
-            isAr = false,
+            price = 12000,
+            isAr = true,
+            lensId = "48cc7ac6-9df4-454d-8443-943575609977",
             isFitting = true,
             color = "Черный",
             sizes = listOf(22, 23, 24, 25, 26, 27),
@@ -176,18 +188,9 @@ class HomeRepositoryImpl @Inject constructor() : HomeRepository {
             name = "Очки Матрица",
             img = "2de8f1aa-45ca-46d6-b67e-2c6b46f1c52d_2.png",
             categoryType = CategoryType.Glass,
-            price = 10000,
-            isAr = false,
-            isFitting = true,
-            color = "Черный",
-            sizes = listOf(22, 23, 24, 25, 26, 27),
-        ),
-        Dress(
-            name = "Очки для работы",
-            img = "2d290275-6513-4a8b-acd6-f2f22b1c3316_3.png",
-            categoryType = CategoryType.Glass,
-            price = 10000,
-            isAr = false,
+            price = 20000,
+            isAr = true,
+            lensId = "48cc7ac6-9df4-454d-8443-943575609977",
             isFitting = true,
             color = "Черный",
             sizes = listOf(22, 23, 24, 25, 26, 27),
@@ -263,6 +266,14 @@ class HomeRepositoryImpl @Inject constructor() : HomeRepository {
             sizes = listOf(22, 23, 24, 25, 26, 27),
         ),
     )
+
+    private val basket = mutableListOf<Dress>()
+
+    override fun setDress(dress: Dress){
+        basket.add(dress)
+    }
+
+    override fun getBasket(): List<Dress> = basket
 
     override fun getDress(categoryType: CategoryType): List<Dress> {
         return listDress.filter { it.categoryType == categoryType }

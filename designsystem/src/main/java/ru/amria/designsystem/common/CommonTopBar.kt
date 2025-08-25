@@ -1,8 +1,10 @@
 package ru.amria.designsystem.common
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
@@ -19,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.amria.designsystem.R
 import ru.amria.designsystem.theme.KingsmanTheme
+import ru.amria.designsystem.theme.TitleStyle
 
 @Composable
 fun CommonTopBar(
@@ -34,6 +37,7 @@ fun CommonTopBar(
     Row(
         modifier = Modifier
             .statusBarsPadding()
+            .padding(top = 12.dp)
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -53,7 +57,7 @@ fun CommonTopBar(
         }
         Text(
             modifier = Modifier.weight(1f),
-            style = MaterialTheme.typography.titleLarge,
+            style = TitleStyle,
             text = titleText,
             color = titleTextColor,
             textAlign = titleAlignment
@@ -65,12 +69,12 @@ fun CommonTopBar(
         }
         icEnd?.let {
             IconButton(onClick = onEndButtonClick) {
-                Icon(
+                Image(
                     painter = painterResource(icEnd),
                     contentDescription = null,
-                    tint = Color.White
                 )
             }
+            Spacer(modifier = Modifier.width(16.dp))
         }
     }
 }

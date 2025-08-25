@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import ru.amria.designsystem.R
 import ru.amria.designsystem.common.CommonTopBar
 import ru.amria.designsystem.theme.KingsmanTheme
 
@@ -18,13 +19,17 @@ fun BaseScaffoldContainer(
     title: String,
     scrollState: ScrollState = rememberScrollState(),
     onBackClick: (() -> Unit)? = null,
+    icEnd: Int? = null,
+    onEndButtonClick: () -> Unit = {},
     content: @Composable (PaddingValues, ScrollState) -> Unit
 ) {
     Scaffold(
         topBar = {
             CommonTopBar(
                 titleText = title,
-                onBackClick = onBackClick
+                onBackClick = onBackClick,
+                icEnd = icEnd,
+                onEndButtonClick = onEndButtonClick
             )
         },
         containerColor = containerColor,

@@ -9,50 +9,16 @@ import ru.amria.designsystem.R
 import ru.amria.designsystem.widget.CategoryItem
 import ru.amria.domain.home.HomeRepository
 import ru.amria.domain.models.dress.CategoryType
+import ru.amria.domain.models.dress.Dress
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(val homeRepository: HomeRepository) : ViewModel() {
-    private val _uiState = MutableStateFlow(HomeUiState(
-        categories = listOf<CategoryItem>(
-            CategoryItem(
-                "Верх",
-                true,
-                CategoryType.Shirt,
-                R.drawable.ic_wear
-            ),
-//            CategoryItem( todo лучше добавить брюки
-//                "Брюки",
-//                false,
-//                CategoryType.Britches,
-//                R.drawable.ic_watch_category
-//            ),
-            CategoryItem(
-                "Обувь",
-                false,
-                CategoryType.Keda,
-                R.drawable.foot
-            ),
-            CategoryItem(
-                "Часы",
-                false,
-                CategoryType.Watch,
-                R.drawable.ic_watch_category
-            ),
-            CategoryItem(
-                "Очки",
-                false,
-                CategoryType.Glass,
-                R.drawable.ic_glass
-            ),
-            CategoryItem(
-                "Кепки",
-                false,
-                CategoryType.Cap,
-                R.drawable.ic_cap
-            ),
+    private val _uiState = MutableStateFlow(
+        HomeUiState(
+            categories = categories
         )
-    ))
+    )
     val uiState: StateFlow<HomeUiState> = _uiState
 
     init {
@@ -61,7 +27,13 @@ class HomeViewModel @Inject constructor(val homeRepository: HomeRepository) : Vi
         }
     }
 
-    fun changeCategory(categoryType: CategoryType){
+    fun setBasket(dress: Dress) {
+        _uiState.update {
+            it.copy(basket = it.basket.plus(dress))
+        }
+    }
+
+    fun changeCategory(categoryType: CategoryType) {
         _uiState.update {
             it.copy(
                 dresses = homeRepository.getDress(categoryType),
@@ -69,4 +41,38 @@ class HomeViewModel @Inject constructor(val homeRepository: HomeRepository) : Vi
             )
         }
     }
+
 }
+
+private val categories = listOf<CategoryItem>(
+    CategoryItem(
+        "Верх",
+        true,
+        CategoryType.Shirt,
+        R.drawable.ic_wear
+    ),
+    CategoryItem(
+        "Очки",
+        false,
+        CategoryType.Glass,
+        R.drawable.ic_glass
+    ),
+    CategoryItem(
+        "Часы",
+        false,
+        CategoryType.Watch,
+        R.drawable.ic_watch_category
+    ),
+    CategoryItem(
+        "Обувь",
+        false,
+        CategoryType.Keda,
+        R.drawable.foot
+    ),
+    CategoryItem(
+        "Кепки",
+        false,
+        CategoryType.Cap,
+        R.drawable.ic_cap
+    ),
+)
