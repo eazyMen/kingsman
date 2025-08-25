@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
             KingmanTheme {
-                NavHost(navController = navController, startDestination = Home) {
+                NavHost(navController = navController, startDestination = Tutorial) {
                     composable<Tutorial> {
                         TutorialScreen(
                             onClick = {
